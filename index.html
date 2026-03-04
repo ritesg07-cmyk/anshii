@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do You Love Me?</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+}
+
+/* Main Card */
+.container{
+    text-align:center;
+    background:rgba(255,255,255,0.15);
+    padding:50px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px rgba(0,0,0,0.2);
+    position:relative;
+    width:350px;
+    height:300px;
+}
+
+h1{
+    font-size:35px;
+    margin-bottom:40px;
+    color:white;
+    font-family:'Dancing Script', cursive;
+}
+
+.btn{
+    padding:12px 30px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff0066;
+    color:white;
+}
+
+.yes:hover{
+    background:#cc0052;
+    transform:scale(1.1);
+}
+
+.no{
+    background:white;
+    color:#ff0066;
+    position:absolute;
+}
+
+/* Romantic Page */
+.love-page{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    color:white;
+    animation:fadeIn 1.5s ease-in-out;
+}
+
+.love-page h2{
+    font-size:50px;
+    font-family:'Dancing Script', cursive;
+    margin-bottom:20px;
+}
+
+.love-page img{
+    width:300px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainPage">
+    <h1>Do You Love Me? ❤️</h1>
+    <button class="btn yes" onclick="showLove()">Yes 💖</button>
+    <button class="btn no" id="noBtn" style="top:170px; left:180px;">No 💔</button>
+</div>
+
+<div class="love-page" id="lovePage">
+    <h2>I Love You So Much Anshii 💕</h2>
+    <p style="margin-bottom:20px;font-size:18px;">you are my cutie pie ❤️</p>
+    <img id="coupleImg" src="" alt="Couple Image">
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const container = document.querySelector(".container");
+
+noBtn.addEventListener("mouseover", function(){
+
+    const containerRect = container.getBoundingClientRect();
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = container.clientWidth - btnWidth;
+    const maxY = container.clientHeight - btnHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
+
+function showLove(){
+    document.getElementById("mainPage").style.display="none";
+    document.getElementById("lovePage").style.display="flex";
+
+    document.getElementById("coupleImg").src = "images.jpeg";
+}
+
+</script>
+
+</body>
+</html>
